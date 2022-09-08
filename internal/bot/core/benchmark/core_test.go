@@ -8,7 +8,7 @@ import (
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
 )
 
-//go:linkname checkEvent gitlab.ozon.dev/Dsmit05/party-day-bot/internal/bot/core.(*Bot).checkEvent
+//go:linkname checkEvent github.com/Dsmit05/party-day-bot/internal/bot/core.(*Bot).checkEvent
 func checkEvent(b *core.Bot, update tgbotapi.Update) (*core.Event, error)
 
 func Benchmark_checkEvent(b *testing.B) {

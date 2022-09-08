@@ -7,7 +7,7 @@ import (
 	_ "github.com/Dsmit05/party-day-bot/internal/bot/core"
 )
 
-//go:linkname nameOfFunction gitlab.ozon.dev/Dsmit05/party-day-bot/internal/bot/core.nameOfFunction
+//go:linkname nameOfFunction github.com/Dsmit05/party-day-bot/internal/bot/core.nameOfFunction
 func nameOfFunction(f interface{}) string
 
 func Benchmark_nameOfFunction(b *testing.B) {
