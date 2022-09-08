@@ -1,0 +1,84 @@
+syntax = "proto3";
+
+package api;
+option go_package = "party-day-bot/pkg/api;api";
+
+import "api/google/api/annotations.proto";
+
+// api for working with the bot
+service User {
+  // Sending a message to all users.
+  rpc SendMsgAllUser(SendMsgAllUserRequest) returns (SendMsgAllUserResponse) {
+    option (google.api.http) = {
+      post: "/v1/admin/msg"
+      body: "*"
+    };
+  }
+
+  // Sending one message.
+  rpc SendMsg(SendMsgRequest) returns (SendMsgResponse) {
+    option (google.api.http) = {
+      post: "/v1/msg"
+      body: "*"
+    };
+  }
+
+  // Sending the image url.
+  rpc SendPhoto(SendPhotoRequest) returns (SendPhotoResponse) {
+    option (google.api.http) = {
+      post: "/v1/photo"
+      body: "*"
+    };
+  }
+
+}
+// ---------------------------------------------------------------------------------------------------------------------
+// SendMsgAllUser endpoint messages
+// ---------------------------------------------------------------------------------------------------------------------
+
+message SendMsgAllUserRequest {
+  // User's Message
+  string msg = 1;
+}
+
+message SendMsgAllUserResponse {}
+
+// ---------------------------------------------------------------------------------------------------------------------
+// SendMsg endpoint messages
+// ---------------------------------------------------------------------------------------------------------------------
+
+message SendMsgRequest {
+  // User's Message
+  string msg = 1;
+
+  // First name
+  string firstName = 2;
+
+  // Last name
+  string lastName = 3;
+
+  // Nickname in telegram
+  string  userName = 4;
+}
+
+message SendMsgResponse {}
+
+// ---------------------------------------------------------------------------------------------------------------------
+// SendPhoto endpoint messages
+// ---------------------------------------------------------------------------------------------------------------------
+
+message SendPhotoRequest {
+  // Ссылка на фото
+  string url = 1;
+
+  // First name
+  string firstName = 2;
+
+  // Last name
+  string lastName = 3;
+
+  // Nickname in telegram
+  string  userName = 4;
+}
+
+message SendPhotoResponse {}

@@ -1,0 +1,208 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "api/api.proto",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "User"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/v1/admin/msg": {
+      "post": {
+        "summary": "Sending a message to all users.",
+        "operationId": "User_SendMsgAllUser",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiSendMsgAllUserResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apiSendMsgAllUserRequest"
+            }
+          }
+        ],
+        "tags": [
+          "User"
+        ]
+      }
+    },
+    "/v1/msg": {
+      "post": {
+        "summary": "Sending one message.",
+        "operationId": "User_SendMsg",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiSendMsgResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apiSendMsgRequest"
+            }
+          }
+        ],
+        "tags": [
+          "User"
+        ]
+      }
+    },
+    "/v1/photo": {
+      "post": {
+        "summary": "Sending the image url.",
+        "operationId": "User_SendPhoto",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/apiSendPhotoResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apiSendPhotoRequest"
+            }
+          }
+        ],
+        "tags": [
+          "User"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "apiSendMsgAllUserRequest": {
+      "type": "object",
+      "properties": {
+        "msg": {
+          "type": "string",
+          "title": "User's Message"
+        }
+      }
+    },
+    "apiSendMsgAllUserResponse": {
+      "type": "object"
+    },
+    "apiSendMsgRequest": {
+      "type": "object",
+      "properties": {
+        "msg": {
+          "type": "string",
+          "title": "User's Message"
+        },
+        "firstName": {
+          "type": "string",
+          "title": "First name"
+        },
+        "lastName": {
+          "type": "string",
+          "title": "Last name"
+        },
+        "userName": {
+          "type": "string",
+          "title": "Nickname in telegram"
+        }
+      }
+    },
+    "apiSendMsgResponse": {
+      "type": "object"
+    },
+    "apiSendPhotoRequest": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string",
+          "title": "Ссылка на фото"
+        },
+        "firstName": {
+          "type": "string",
+          "title": "First name"
+        },
+        "lastName": {
+          "type": "string",
+          "title": "Last name"
+        },
+        "userName": {
+          "type": "string",
+          "title": "Nickname in telegram"
+        }
+      }
+    },
+    "apiSendPhotoResponse": {
+      "type": "object"
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": {}
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    }
+  }
+}

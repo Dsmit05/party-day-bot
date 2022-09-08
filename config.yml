@@ -1,0 +1,23 @@
+bot:
+  key: you_token
+  debug: false
+# your secret command, after launching, send it to the bot
+  secretCMD: /qwerty000
+
+database:
+  use: true
+#  use a postgres to run outside of a container
+  host: localhost
+  port: 5432
+  table: party
+  user: postgres
+  password: postgres
+
+apiGRPCServer:
+  host: localhost
+  port: 8081
+  timeoutConnection: 5
+
+apiHTTPServer:
+  host: localhost
+  port: 8082

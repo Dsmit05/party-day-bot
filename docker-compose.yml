@@ -1,0 +1,33 @@
+version: "3.9"
+services:
+  postgres:
+    image: postgres:14
+    restart: always
+    environment:
+      POSTGRES_DB: "party"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./db/postgres/postgres-data:/var/lib/postgresql/data
+      - ./db/postgres/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+    networks:
+      - bot_network
+  bot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: "no"
+    ports:
+      - '8081:8081'
+      - '8082:8082'
+    volumes:
+      - ./logs.json:/logs.json
+    networks:
+      - bot_network
+    depends_on:
+      - postgres
+
+networks:
+  bot_network:

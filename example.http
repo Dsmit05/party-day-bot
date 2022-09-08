@@ -1,0 +1,31 @@
+### Отправка всем обычным пользователям сообщение
+POST localhost:8082/v1/admin/msg
+Content-Type: application/json
+
+{
+  "msg": "Ты обычный, прими это"
+}
+
+
+### Отправка виновникам торжества сообщения
+POST localhost:8082/v1/msg
+Content-Type: application/json
+
+{
+  "msg": "Привет, как ты?",
+  "firstName": "d",
+  "lastName": "smit",
+  "userName": "from api"
+}
+
+### Отправка виновникам торжества фотки
+POST localhost:8082/v1/photo
+Content-Type: application/json
+
+{
+  "url": "https://avatars.mds.yandex.net/get-zen_doc/1596193/pub_5d1610d0c206ec00adec887d_5d161c6b122da300aff8254f/scale_1200",
+  "firstName": "d",
+  "lastName": "smit",
+  "userName": "from api"
+}
+

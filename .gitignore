@@ -1,0 +1,7 @@
+*.exe
+*.exe~
+
+/.idea/
+/postgres-data/
+logs.json
+example.http
